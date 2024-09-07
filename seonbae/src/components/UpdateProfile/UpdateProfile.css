@@ -4,12 +4,16 @@ label {
     font-size: 22px;
     font-weight: 500;
 }
+body {
+    height:100%;
+}
 
 .container {
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 60px;
+    margin-bottom: 60px;
     width: 600px;
     background: #fff;
     align-items: center; 
@@ -73,9 +77,6 @@ label {
     border-radius: 20px;
 }
 
-.input img {
-    margin: 0px 60px;
-}
 
 .input input {
     height: 50px;

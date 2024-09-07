@@ -15,6 +15,7 @@ function App() {
         <Route path="/home-page" element={<Homepage />}/>
         <Route path="/user-info" element={<info/>}/>
         <Route path="/update-profile" element={<UpdateProfile />} />
+    
       </Routes>
     </Router>
   );
