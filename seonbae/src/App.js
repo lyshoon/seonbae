@@ -6,7 +6,6 @@ import UpdateProfile from './Components/UpdateProfile/UpdateProfile.jsx';
 import Homepage from './Components/Homepage/homepage.jsx';
 import LoginSignup from './Components/LoginSignup/LoginSignup.jsx';
 import Info from './Components/Info/Info.jsx'; 
-import InfoConfirmation from './Components/InfoConfirmation/InfoConfirmation.jsx';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         <Route path="/home-page" element={<Homepage />}/>
         <Route path="/user-info" element={<Info/>}/>
         <Route path="/update-profile" element={<UpdateProfile />} />
-        <Route path="/info-confirmation" element={<InfoConfirmation />} />
     
       </Routes>
     </Router>
