@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "seonbae backend server",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyshoon/seonbae.git"
+  },
+  "keywords": [
+    "backend",
+    "express"
+  ],
+  "author": "Shoon Lei May, Su Lei Lei Naing, Khit Min",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lyshoon/seonbae/issues"
+  },
+  "homepage": "https://github.com/lyshoon/seonbae#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
