@@ -18,7 +18,7 @@ body {
 .logout {
     margin-right: 15px;
     padding: 8px 20px;
-    background-color: #f44336;
+    background-color: #5eacff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -27,7 +27,7 @@ body {
 }
   
 .logout:hover {
-    background-color: #900202;
+    background-color: #021790;
 }
   
   
