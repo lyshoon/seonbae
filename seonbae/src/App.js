@@ -8,6 +8,7 @@ import LoginSignup from './Components/LoginSignup/LoginSignup.jsx';
 import Info from './Components/Info/Info.jsx'; 
 import InfoConfirmation from './Components/InfoConfirmation/InfoConfirmation.jsx';
 import Edit from './Components/Edit/edit.jsx';
+import ProfileEdit from './Components/ProfileEdit/ProfileEdit.jsx'
 
 function App() {
   return (
