@@ -18,7 +18,6 @@ function App() {
         <Route path="/home-page" element={<Homepage />}/>
         <Route path="/user-info" element={<Info/>}/>
         <Route path="/update-profile" element={<UpdateProfile />} />
-        <Route path="/user-info" element={<InfoConfirmation />} />
         <Route path="/user-edit" element={<Edit />} />
         <Route path="/info-confirmation" element={<InfoConfirmation />} />
         <Route path="/profile-edit" element={<ProfileEdit />} />
