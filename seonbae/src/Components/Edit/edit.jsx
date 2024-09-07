@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './edit.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const InfoConfirmation = () => {
-    const user = {
-        name: "Your name",
-        bio : "Hi!",
-        age : "23",
-        university: "Korea University",
-        major: "Computer Science",
-        nationality: "myanmar",
-        degree: "Bachelor's",
-        facebookProfile: "https://www.facebook.com/shoon.may.1804", 
-        instagramProfile: "https://www.instagram.com/username",
-      };
+    const [user, setUser] = useState([]);
+    const navigate = useNavigate();
+    
+    const getUserbyId = async () => {
+    try{
+      const userid = sessionStorage.getItem("userId");
+
+      const response = await axios.get(`http://localhost:8080/api/users/GetbyUserId/`, {
+        params: { id: userid }}); 
+      
+      setUser(response.data);
+      console.log(user);
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getUserbyId();
+  }, []);
 
     return (
         <div className="container">
@@ -22,39 +33,39 @@ const InfoConfirmation = () => {
             <div className="info-form">
                 <div className="info-tab">
                     <label htmlFor="name"> Name </label>
-                    <p id="name"> {user.name} </p>
+                    <p id="name"> {user.Name} </p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="Bio"> Bio </label>
-                    <p id="Bio">{user.bio}</p>
+                    <p id="Bio">{user.Bio}</p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="age"> Age </label>
-                    <p id="age">{user.age}</p>
+                    <p id="age">{user.Age}</p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="nationality"> Nationality</label>
-                    <p id="nationality">{user.nationality}</p>
+                    <p id="nationality">{user.Nationality}</p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="degree"> Degree</label>
-                    <p id="degree">{user.degree}</p>
+                    <p id="degree">{user.Year}</p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="university"> University </label>
-                    <p id="university">{user.university}</p>
+                    <p id="university">{user.University}</p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="major"> Major </label>
-                    <p id="major"> {user.major} </p>
+                    <p id="major"> {user.Major} </p>
                 </div>
                 <div className="info-tab">
                     <label htmlFor="socialmedia"> Social Media </label>
-                    <p id="socialmedia"> {user.facebookProfile} / {user.instagramProfile} </p>
+                    <p id="socialmedia"> {user.SocialMediaLink} / {user.instagramProfile} </p>
                 </div>
             </div>
             <div className='btn-div'> 
-                <button> Edit </button>
+                <button onClick = {() => navigate('/profile-edit')}> Edit </button>
             </div>
             
             

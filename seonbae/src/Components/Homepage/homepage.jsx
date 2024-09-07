@@ -60,7 +60,6 @@ const Homepage = () => {
     navigate('/user-info');
   }
 
-
   const [searchValue, setSearchValue] = useState('');
 
   return (
@@ -70,11 +69,14 @@ const Homepage = () => {
         <h1 className="logo">SeonBae</h1>
         <div className="user-controls">
           <button className="logout" onClick = {() => navigate('/')}>Log Out</button>
-          <div className="profile-icon">👤</div> 
+          <div className="profile-icon" onClick = {() => navigate('/user-edit')}>👤</div> 
         </div>
       </div>
 
-      <div className="search-input-container">
+      <div className="search-container">
+         <label htmlFor="university-search">Enter Your University or Country or Major :</label>
+
+         <div className="search-input-container">
           <FontAwesomeIcon icon={faSearch} className="search-icon" onClick = {() => filtering()}/>
           <input
             type="text"
@@ -83,13 +85,15 @@ const Homepage = () => {
             onChange={(e) => setFilterText(e.target.value)}
           />
           
+          {searchValue && (
             <FontAwesomeIcon
               icon={faTimes}
               className="clear-icon"
               onClick={ () => handleClearSearch()}
-            />
+            />)}
           
         </div>
+      </div>
 
       <div className="recommendations">
         <h2>Here are some people from your University</h2>
