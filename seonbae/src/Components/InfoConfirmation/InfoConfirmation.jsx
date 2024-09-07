@@ -5,6 +5,7 @@ const InfoConfirmation = () => {
     const user = {
         name: "Your name",
         bio : "Hi!",
+        age : "23",
         university: "Korea University",
         major: "Computer Science",
         nationality: "myanmar",
@@ -52,6 +53,11 @@ const InfoConfirmation = () => {
                     <p id="socialmedia"> {user.facebookProfile} / {user.instagramProfile} </p>
                 </div>
             </div>
+            <div className='btn-div'> 
+                <button> Confirm </button>
+                <button> Edit </button>
+            </div>
+            
             
         </div>
     );

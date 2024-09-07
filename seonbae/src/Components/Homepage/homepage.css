@@ -1,11 +1,7 @@
 .homepage-container {
     padding: 20px;
-    height:100vh;
-    width: 100%;
-    margin: auto;
     font-family: Arial, sans-serif;
     box-sizing: linear-gradient(180deg, #f5f5f5,#e0e0ff);
-    margin-top: 120px;
   }
   
   .top-bar {
@@ -14,19 +10,35 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 8px 20px;
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
     border-bottom: 2px solid #ddd;
   }
   
+  .search-container {
+  margin: 20px 0;
+  }
+
+  .search-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .clear-icon {
+    position: absolute;
+    right: 10px;
+    color: #888;
+    cursor: pointer;
+  }
+
   .logo {
     color:#9d008d;
     font-size: 32px;
     font-weight: bold;
   }
-  
+
   .user-controls {
     
     padding: 0 40px;
