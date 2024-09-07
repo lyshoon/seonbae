@@ -1,18 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const ProfileEdit = () => {
-    const user = {
-        name: "Your name",
-        bio : "Hi!",
-        age : "23",
-        university: "Korea University",
-        major: "Computer Science",
-        nationality: "Myanmar",
-        degree: "Bachelor's",
-        facebookProfile: "https://www.facebook.com/shoon.may.1804", 
-        instagramProfile: "https://www.instagram.com/username",
-      };
+
+  // const [user, setUser] = useState([]);
+  // const getUserbyId = async () => {
+  //   try{
+  //     const userid = sessionStorage.getItem("selectedUserId");
+
+  //     const response = await axios.get(`http://localhost:8080/api/users/GetbyUserId/`, {
+  //       params: { id: userid }}); 
+      
+  //     setUser(response.data);
+  //   }catch(error){
+  //     console.log(error);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getUserbyId();
+  // }, []);
+
+  const navigate = useNavigate();
+
+  const [EditedName, SetEditedName] = useState("");
+  const [EditedBio, SetEditedBio] = useState("");
+  const [EditedAge, SetEditedAge] = useState();
+  const [EditedSocialMediaType, SetEditedSocialMediaType] = useState("");
+  const [EditedSocialMediaLink, SetEditedSocialMediaLink] = useState("");
+
+  const handleEdit = async () => {
+
+    const userId = sessionStorage.getItem("userId");
+    try{
+      const response = await axios.patch(`http://localhost:8080/api/users/AddInformationbyUserId`, {
+        userId: userId,
+        Name:EditedName,
+        Bio:EditedBio,
+        Age: EditedAge,
+        Nationality:selectedNationality,
+        Major:selectedMajor,
+        Year:selectedDegree,
+        University:selectedUniversity,
+        SocialMediaType:EditedSocialMediaType,
+        SocialMediaLink: EditedSocialMediaLink,
+      });
+
+      navigate('/home-page');
+    }catch(error){
+      console.log(error);
+    }
+  }
 
       const [selectedNationality, setSelectedNationality] = useState('');
       const handleChangeNationality  = (event) => {
@@ -81,30 +121,39 @@ const ProfileEdit = () => {
       };
 
       return (
+        <>
+        <div className="top-bar">
+            <h1 className="logo">SeonBae</h1>
+              <div className="user-controls">
+              <button className="logout" onClick = {() => navigate('/')}>Log Out</button>
+              <div className="profile-icon" onClick = {() => navigate('/user-edit')}>👤</div> 
+            </div>
+          </div>
         <div className='container'>
+
           <div className="header">
-            <div className="text"> Update Your Profile </div>
+            <div className="text"> Edit your Profile </div>
             <div className="underline"></div>
           </div>
           <div className="inputs">
             <label htmlFor="name" > Your Name </label>
             <div id="name" className="input">
-              <input type="text" placeholder="Name" value={user.name}required/>
+              <input type="text" placeholder="Name" value={EditedName} onChange = {(e) => SetEditedName(e.target.value)} required/>
             </div>
             
             <label htmlFor="bio" > Your Bio </label>
             <div id="bio" className="input">
-              <input type="text" placeholder="Write something about yourself" value={user.bio} />
+              <input type="text" placeholder="Write something about yourself" value={EditedBio}  onChange = {(e) => SetEditedBio(e.target.value)}/>
             </div>
     
             <label htmlFor="age" > Age </label>
             <div id="age" className="input">
-              <input type="number" min='1' placeholder="Your age" value={user.age} required/>
+              <input type="number" min='1' placeholder="Your age" value={EditedAge}  onChange = {(e) => SetEditedAge(e.target.value)} required/>
             </div>
     
             <label htmlFor="nationality" > Your nationality</label>
             <div id="nationality" className="input">
-              <select className="dropdown" placeholder="Your Nationality" name="nationality" value={user.nationality}
+              <select className="dropdown" placeholder="Your Nationality" name="nationality" value={selectedNationality}
             onChange={handleChangeNationality}>
                   {nationalities.map((nationality, index) => (
                   <option key={index} value={nationality}>
@@ -116,7 +165,7 @@ const ProfileEdit = () => {
     
             <label htmlFor="degree" > Your degree</label>
             <div id="degree" className="input">
-              <select className="dropdown" placeholder="Your Degree" name="degree" value={user.degree}
+              <select className="dropdown" placeholder="Your Degree" name="degree" value={selectedDegree}
             onChange={handleChangeDegree}>
                     {degreeLevel.map((degree, index) => (
                   <option key={index} value={degree}>
@@ -128,7 +177,7 @@ const ProfileEdit = () => {
     
             <label htmlFor="univerisity" > Your University</label>
             <div id="university" className="input">
-              <select className="dropdown" placeholder="Your University" name="university" value={user.university}
+              <select className="dropdown" placeholder="Your University" name="university" value={selectedUniversity}
             onChange={handleChangeUniversity}>
                     {universities.map((univerisity, index) => (
                   <option key={index} value={univerisity}>
@@ -140,7 +189,7 @@ const ProfileEdit = () => {
     
             <label htmlFor="major" > Your Major</label>
             <div id="major" className="input">
-              <select className="dropdown" placeholder="Your  Major" name="major" value={user.major}
+              <select className="dropdown" placeholder="Your  Major" name="major" value={selectedMajor}
             onChange={handleChangeMajor}>
                     {majors.map((major, index) => (
                   <option key={index} value={major}>
@@ -152,20 +201,21 @@ const ProfileEdit = () => {
     
             <label htmlFor="socialmedia" > Your Social Media Account</label>
             <div id="socialmedia" className="input">
-              <select className="social-media-dropdown" placeholder="Social Media" name="socialmedia"> 
+              <select className="social-media-dropdown" value = {EditedSocialMediaType} onChange = {(e) => SetEditedSocialMediaType(e.target.value)} placeholder="Social Media" name="socialmedia"> 
                 <option> Facebook </option>
                 <option> Instagram </option>
               </select>
-              <input type="text" className="input" value={user.facebookProfile}/>
+              <input type="text" className="input" value={EditedSocialMediaLink} onChange = {(e) => SetEditedSocialMediaLink(e.target.value)}/>
       
             </div>
     
           </div>
     
           <div className="submit-container">
-            <button className="save-button" > Save </button>
+            <button className="save-button" onClick = {() => handleEdit()}> Save </button>
           </div>
         </div>
+        </>
       );
 }
 

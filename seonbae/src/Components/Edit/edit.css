@@ -18,7 +18,7 @@ body{
 .header {
     display: flex;
     align-items: center;
-    
+    color: aquamarine;
     width: 100%;
     margin-top: 20px 20px;
     padding: 20px 20px;
@@ -27,7 +27,7 @@ body{
 
 .text {
     text-align: center;
-    color: pink;
+    color: rgb(0, 0, 0);
     font-size: 40px;
     font-weight: 700;
 }
@@ -35,7 +35,7 @@ body{
 .underline {
     width: 61px;
     height: 6px;
-    background: purple;
+    background: rgb(0, 0, 0);
     border-radius: 9px;
 }
 
@@ -50,11 +50,13 @@ body{
 .info-tab {
     display: flex;
     height:50px;
-    width: 100%;
+    width: 90%;
     align-items: center;
     justify-content: center;
-    padding: 20 px 20px;
+    padding: 10 px 20px;
     margin: 20px 20px;
+    background-color: rgb(187, 228, 228);
+    border-radius: 5px;
 }
 
 .info-tab label {
@@ -63,12 +65,13 @@ body{
     vertical-align: middle;
     font-family: Arial, sans-serif;
     font-size: 18px;
-    background-color: rgba(39, 204, 204, 0.903);
+    background-color: rgba(206, 255, 255, 0.903);
     
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 5px;
     padding-right: 0%;
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 .info-tab p {
@@ -86,7 +89,7 @@ button{
     align-items: center;
     width: 120px;
     height: 50px;
-    background:rgb(76, 228, 228) ;
+    background:rgba(206, 255, 255, 0.903) ;
     color:rgb(0, 0, 0);
     border-radius: 50px;
     font-size: 19px;

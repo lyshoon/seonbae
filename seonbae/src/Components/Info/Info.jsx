@@ -44,15 +44,15 @@ const Info = () => {
         </div>
         <div className="form-group">
           <label>Degree:</label>
-          <input type="text" value={user.degree} readOnly />
+          <input type="text" value={user.Major} readOnly />
         </div>
       </div>
 
       <div className="social-media-icons">
-        <a href={user.facebookProfile} target="_blank" rel="noopener noreferrer">
+        <a href={user.SocialMediaLink} target="_blank" rel="noopener noreferrer">
           <FaFacebook className="social-icon" />
         </a>
-        <a href={user.instagramProfile} target="_blank" rel="noopener noreferrer">
+        <a href={user.SocialMediaLink} target="_blank" rel="noopener noreferrer">
           <FaInstagram className="social-icon" />
         </a>
       </div>

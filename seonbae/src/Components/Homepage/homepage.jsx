@@ -49,23 +49,31 @@ const Homepage = () => {
       <div className="top-bar">
         <h1 className="logo">SeonBae</h1>
         <div className="user-controls">
-          <button className="logout" onClick={() => navigate('/')}>Log Out</button>
-          <div className="profile-icon">👤</div> 
+          <button className="logout" onClick = {() => navigate('/')}>Log Out</button>
+          <div className="profile-icon" onClick = {() => navigate('/user-edit')}>👤</div> 
         </div>
       </div>
 
       <div className="search-container">
-        <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={filtering} />
-        <input
-          type="text"
-          id="university-search"
-          placeholder="Search"
-          value={filterText}
-          onChange={(e) => setFilterText(e.target.value)}
-        />
-        {filterText && (
-          <FontAwesomeIcon icon={faTimes} className="clear-icon" onClick={handleClearSearch} />
-        )}
+         <label htmlFor="university-search">Enter Your University or Country or Major :</label>
+
+         <div className="search-input-container">
+          <FontAwesomeIcon icon={faSearch} className="search-icon" onClick = {() => filtering()}/>
+          <input
+            type="text"
+            id="university-search"
+            placeholder="Search"
+            onChange={(e) => setFilterText(e.target.value)}
+          />
+          
+          {searchValue && (
+            <FontAwesomeIcon
+              icon={faTimes}
+              className="clear-icon"
+              onClick={ () => handleClearSearch()}
+            />)}
+          
+        </div>
       </div>
 
       <div className="recommendations">
