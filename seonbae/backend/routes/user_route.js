@@ -173,7 +173,7 @@ router.post('/SignUp', async (req, res) => {
  */
 router.patch('/AddInformationbyUserId', async (req, res) => {
     try {
-        const { userId, Name, Bio, Age, Nationality, Major, Year, University, DegreeType, SocialMediaType, SocialMediaLink } = req.body;
+        const { userId, Name, Bio, Age, Nationality, Major, Year, University, SocialMediaType, SocialMediaLink } = req.body;
 
         const updateFields = {
             ...(Name && { Name }),
@@ -280,7 +280,7 @@ router.post('/LogIn', async (req, res) => {
         Email
     });
   
-    if (!user) return res.status(400).send("User not found!");
+    if (!user) return res.status(404).send("User not found!");
   
     if (user.Password != Password) return res.status(404).send("Password is incorrect")
   
@@ -345,6 +345,88 @@ router.get('/GetAllUsers', async (req, res) => {
         const users = await User.find();
 
         res.status(200).json(users);
+    }catch(error){
+        res.status(500).json(error);
+    }
+})
+
+/**
+ * @swagger
+ * /api/users/GetbyUserId:
+ *   get:
+ *     summary: Get user by user ID
+ *     description: Retrieve user details based on their unique identifier (user ID).
+ *     tags:
+ *       - Users
+ *     parameters:
+ *       - in: query
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the user to retrieve.
+ *         example: "60d21b4667d0d8992e610c85"
+ *     responses:
+ *       200:
+ *         description: User data retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                   example: "60d21b4667d0d8992e610c85"
+ *                 Name:
+ *                   type: string
+ *                   example: "John Doe"
+ *                 Email:
+ *                   type: string
+ *                   example: "johndoe@example.com"
+ *                 Age:
+ *                   type: number
+ *                   example: 25
+ *                 Nationality:
+ *                   type: string
+ *                   example: "American"
+ *                 Major:
+ *                   type: string
+ *                   example: "Computer Science"
+ *                 University:
+ *                   type: string
+ *                   example: "Harvard University"
+ *                 DegreeType:
+ *                   type: string
+ *                   example: "Bachelor's"
+ *       404:
+ *         description: User not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: string
+ *               example: "User not found!"
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Internal server error"
+ */
+router.get('/GetbyUserId', async (req, res) => {
+    try{
+        const {id} = req.query;
+
+        const user = await User.findById({
+            _id: new mongoose.Types.ObjectId(id)
+        });
+
+        if(!user) return res.status(404).json("User not found!");
+
+        res.json(user);
     }catch(error){
         res.status(500).json(error);
     }

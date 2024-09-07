@@ -1,37 +1,46 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './Info.css';
+import axios from 'axios';
 import { FaFacebook, FaInstagram } from 'react-icons/fa'; 
 
-const Info = () => {
-  
-  const user = {
-    name: "user",
-    university: "Korea University",
-    major: "Computer Science",
-    nationality: "myanmar",
-    degree: "Bachelor's",
-    facebookProfile: "https://www.facebook.com/shoon.may.1804", 
-    instagramProfile: "https://www.instagram.com/username",
-  };
+const Info = () => { 
+
+  const [user, setUser] = useState([]);
+  const getUserbyId = async () => {
+    try{
+      const userid = sessionStorage.getItem("selectedUserId");
+
+      const response = await axios.get(`http://localhost:8080/api/users/GetbyUserId/`, {
+        params: { id: userid }}); 
+      
+      setUser(response.data);
+    }catch(error){
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getUserbyId();
+  }, []);
 
   return (
     <div className="info-container">
       <div className="info-form">
         <div className="form-group">
           <label>Name:</label>
-          <input type="text" value={user.name} readOnly />
+          <input type="text" value={user.Name} readOnly />
         </div>
         <div className="form-group">
           <label>University:</label>
-          <input type="text" value={user.university} readOnly />
+          <input type="text" value={user.University} readOnly />
         </div>
         <div className="form-group">
           <label>Major:</label>
-          <input type="text" value={user.major} readOnly />
+          <input type="text" value={user.Major} readOnly />
         </div>
         <div className="form-group">
           <label>Nationality:</label>
-          <input type="text" value={user.nationality} readOnly />
+          <input type="text" value={user.Nationality}readOnly />
         </div>
         <div className="form-group">
           <label>Degree:</label>
