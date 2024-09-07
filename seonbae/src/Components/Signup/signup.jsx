@@ -2,16 +2,40 @@ import React, { useState } from 'react';
 import './signup.css';
 import email_icon from '../Assets/email.png';
 import password_icon from '../Assets/password.png';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
  
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [action, setAction] = useState('Sign Up'); 
+  const navigate = useNavigate();
 
-  const handleSignUp = () => {
-    console.log('Signing up:', { Email, Password });
-  };
+  const handleSignUp = async(e) => {
+    try {
+
+      const isUserNameValid = Email !== '';
+      const isPasswordValid = Password !== '';
+
+      if (!isUserNameValid || !isPasswordValid) return;
+
+      const response = await axios.post("http://localhost:8080/api/users/SignUp", {
+        Email,
+        Password,
+      })
+
+      sessionStorage.setItem("email", response.data.Email);
+      sessionStorage.setItem("password", response.data.Password);
+      sessionStorage.setItem("userId", response.data._id);
+
+      //Write Code here
+      navigate("/update-profile")
+    }
+    catch(error){
+      console.log(error);
+      }
+    }
 
   return (
     <div className='container'>

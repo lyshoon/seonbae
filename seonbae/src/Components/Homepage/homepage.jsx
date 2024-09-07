@@ -66,7 +66,7 @@ const Homepage = () => {
             onChange={(e) => setFilterText(e.target.value)}
           />
           
-          {searchValue && (
+          {filterText && (
             <FontAwesomeIcon
               icon={faTimes}
               className="clear-icon"

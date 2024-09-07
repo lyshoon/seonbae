@@ -13,31 +13,6 @@ const LoginSignup = () => {
   const [action, setAction] = useState("Log in");  
   const navigate = useNavigate();
 
-  const handleSignUp = async(e) => {
-    try {
-
-      const isUserNameValid = Email !== '';
-      const isPasswordValid = Password !== '';
-
-      if (!isUserNameValid || !isPasswordValid) return;
-
-      const response = await axios.post("http://localhost:8080/api/users/SignUp", {
-        Email,
-        Password,
-      })
-
-      sessionStorage.setItem("email", response.data.Email);
-      sessionStorage.setItem("password", response.data.Password);
-      sessionStorage.setItem("userId", response.data._id);
-
-      //Write Code here
-      navigate("/update-profile")
-    }
-    catch(error){
-      console.log(error);
-      }
-    }
-
     const handleLogIn = async(e) => {
       try {
 
@@ -84,7 +59,7 @@ const LoginSignup = () => {
       {action==="Sign Up"?<div></div>:<div className="forgot-password">Forgot Password? <span>Click Here!</span></div>}
 
       <div className="submit-container">
-        <div className={action==="Login"?"submit gray":"submit"} onClick={()=>{handleSignUp()}}>Sign up</div>
+        <div className={action==="Login"?"submit gray":"submit"} onClick={()=>navigate('/user-signup')}>Sign up</div>
         <div className={action==="Sign Up"? "submit gray":"submit"} onClick={()=>{handleLogIn()}}>Login</div>
       </div>
     </div>

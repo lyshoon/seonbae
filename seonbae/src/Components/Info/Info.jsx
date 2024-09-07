@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import './Info.css';
 import axios from 'axios';
 import { FaFacebook, FaInstagram } from 'react-icons/fa'; 
+import { useNavigate } from 'react-router-dom';
 
 const Info = () => { 
 
   const [user, setUser] = useState([]);
+  const navigate = useNavigate();
   const getUserbyId = async () => {
     try{
       const userid = sessionStorage.getItem("selectedUserId");
@@ -14,6 +16,7 @@ const Info = () => {
         params: { id: userid }}); 
       
       setUser(response.data);
+      sessionStorage.setItem("selectedUserName", response.data.Name);
     }catch(error){
       console.log(error);
     }
@@ -58,7 +61,7 @@ const Info = () => {
       </div>
 
       <div className="bottom-section">
-        <button className="review-button">Leave a review</button>
+        <button className="review-button" onClick={()=> navigate('/write-review')}>Leave a review</button>
       </div>
     </div>
   );

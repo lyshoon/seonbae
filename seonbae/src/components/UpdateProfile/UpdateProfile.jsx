@@ -97,7 +97,7 @@ const UpdateProfile = () => {
         SocialMediaLink: socialMediaLink,
       })
 
-      navigate('/update-education-info'); 
+      navigate('/home-page'); 
     }catch(error){
       console.log(error);
     }
