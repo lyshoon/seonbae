@@ -10,11 +10,17 @@ import password_icon from '../Assets/password.png';
 const LoginSignup = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [action, setAction] = useState("Login");  
+  const [action, setAction] = useState("Log in");  
   const navigate = useNavigate();
 
   const handleSignUp = async(e) => {
     try {
+
+      const isUserNameValid = Email !== '';
+      const isPasswordValid = Password !== '';
+
+      if (!isUserNameValid || !isPasswordValid) return;
+
       const response = await axios.post("http://localhost:8080/api/users/SignUp", {
         Email,
         Password,
@@ -25,7 +31,7 @@ const LoginSignup = () => {
       sessionStorage.setItem("userId", response.data._id);
 
       //Write Code here
-      navigate("/homePage")
+      navigate("/update-profile")
     }
     catch(error){
       console.log(error);
@@ -34,6 +40,12 @@ const LoginSignup = () => {
 
     const handleLogIn = async(e) => {
       try {
+
+        const isUserNameValid = Email !== '';
+        const isPasswordValid = Password !== '';
+
+        if (!isUserNameValid || !isPasswordValid) return;
+
         const response = await axios.post("http://localhost:8080/api/users/LogIn", {
           Email,
           Password,
@@ -44,7 +56,7 @@ const LoginSignup = () => {
         sessionStorage.setItem("userId", response.data.user._id);
 
         //Write Code here
-        navigate("/homePage")
+        navigate("/home-page");
         }
       catch(error){
         console.log(error);
@@ -54,7 +66,7 @@ const LoginSignup = () => {
   return (
     <div className='container'>
       <div className="header">
-        <div className="text">{action}</div>
+        <div className="text"> Welcome </div>
         <div className="underline"></div>
       </div>
       <div className="inputs">

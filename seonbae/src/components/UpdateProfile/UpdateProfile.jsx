@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import './UpdateProfile.css';
+import axios from "axios";
 
 import { useNavigate } from 'react-router-dom';
 
 
 const UpdateProfile = () => {
 
-  const [selectedNationality, setSelectedNationality] = useState('');
+  const [name, setSelectedName] = useState("");
+  const [bio, setSelectedBio] = useState("");
+  const [Age, setSelectedAge] = useState();
+  const [socialMediaType, setSocialMediaType] = useState("Facebook");
+  const [socialMediaLink, setSocialMediaLink] = useState("");
+
+  const [selectedNationality, setSelectedNationality] = useState('Afghan');
   const handleChangeNationality  = (event) => {
     setSelectedNationality(event.target.value);
   };
@@ -45,7 +52,7 @@ const UpdateProfile = () => {
     'Vatican', 'Venezuelan', 'Vietnamese', 'Yemeni', 'Zambian', 'Zimbabwean'
   ];
 
-  const [selectedDegree, setSelectedDegree] = useState('');
+  const [selectedDegree, setSelectedDegree] = useState('Undergraduate (1st Year)');
   const handleChangeDegree = (event) => {
     setSelectedDegree(event.target.value);
   };
@@ -58,7 +65,7 @@ const UpdateProfile = () => {
     'Ajou University', 'Busan National University of Education', 'Chonnam National University', 'Chung-Ang University', 'Chungbuk National University', 'Dong-A University', 'Dongguk University', 'Ewha Womans University', 'Gachon University', 'Gyeongsang National University', 'Hallym University', 'Hanbat National University', 'Hanyang University', 'Hoseo University', 'Inha University', 'Jeju National University', 'KAIST (Korea Advanced Institute of Science and Technology)', 'Konkuk University', 'Korea Maritime and Ocean University', 'Korea University', 'Korea University of Technology and Education', 'Kyung Hee University', 'Kyungpook National University', 'Myongji University', 'Namseoul University', 'NongHyup University', 'POSTECH (Pohang University of Science and Technology)', 'Pukyong National University', 'Sangmyung University', 'Sejong University', 'Seongnam University', 'Seoul Cyber University', 'Seoul National University', 'Sogang University', "Sookmyung Women's University", 'Soongsil University', 'Sungkyunkwan University', 'Sunmoon University', 'Woosong University', 'Yonsei University'
   ];
 
-  const [selectedUniversity, setSelectedUniversity] = useState('');
+  const [selectedUniversity, setSelectedUniversity] = useState('Ajou University');
   const handleChangeUniversity = (event) => {
     setSelectedUniversity(event.target.value);
   };
@@ -67,16 +74,34 @@ const UpdateProfile = () => {
     'Art History', 'Biology', 'Business', 'Business Administration', 'Chemistry', 'Civil Engineering', 'Computer Science', 'Economics', 'Electrical Engineering', 'English Literature', 'Environmental Science', 'Finance', 'History', 'Marketing', 'Mathematics', 'Mechanical Engineering', 'Nursing', 'Philosophy', 'Physics', 'Political Science', 'Psychology', 'Sociology'
   ]
 
-  const [selectedMajor, setSelectedMajor] = useState('');
+  const [selectedMajor, setSelectedMajor] = useState('Art History');
   const handleChangeMajor = (event) => {
     setSelectedMajor(event.target.value);
   };
  
   const navigate = useNavigate();
 
-  const handleNextClick = () => {
-    navigate('/update-education-info'); // Navigate to the /next route
-  };
+  const HandleSubmit = async () => {
+    try{
+
+      const response = await axios.patch("http://localhost:8080/api/users/AddInformationbyUserId", {
+        userId: sessionStorage.getItem("userId"),
+        Name:name,
+        Bio:bio,
+        Age:Age,
+        Nationality: selectedNationality,
+        Major: selectedMajor,
+        Year: selectedDegree,
+        University: selectedUniversity,
+        SocialMediaType: socialMediaType,
+        SocialMediaLink: socialMediaLink,
+      })
+
+      navigate('/update-education-info'); 
+    }catch(error){
+      console.log(error);
+    }
+  }
 
   return (
     <div className='container'>
@@ -87,17 +112,17 @@ const UpdateProfile = () => {
       <div className="inputs">
         <label htmlFor="name" > Your Name </label>
         <div id="name" className="input">
-          <input type="text" placeholder="Name" required/>
+          <input type="text" value = {name} onChange={(e) => setSelectedName(e.target.value)} placeholder="Name" required/>
         </div>
         
         <label htmlFor="bio" > Your Bio </label>
         <div id="bio" className="input">
-          <input type="text" placeholder="Write something about yourself" />
+          <input type="text" value = {bio} onChange={(e) => setSelectedBio(e.target.value)} placeholder="Write something about yourself" />
         </div>
 
         <label htmlFor="age" > Age </label>
         <div id="age" className="input">
-          <input type="number" min='1' placeholder="Your age" required/>
+          <input type="number" min='1' value = {Age} onChange={(e) => setSelectedAge(e.target.value)} placeholder="Your age" required/>
         </div>
 
         <label htmlFor="nationality" > Your nationality</label>
@@ -150,18 +175,18 @@ const UpdateProfile = () => {
 
         <label htmlFor="socialmedia" > Your Social Media Account</label>
         <div id="socialmedia" className="input">
-          <select className="social-media-dropdown" placeholder="Social Media" name="socialmedia"> 
+          <select className="social-media-dropdown" value = {socialMediaType} onChange={(e) => setSocialMediaType(e.target.value)} placeholder="Social Media" name="socialmedia"> 
             <option> Facebook </option>
             <option> Instagram </option>
           </select>
-          <input type="text" className="input" placeholder="Please write your account link"/>
+          <input type="text" className="input" value = {socialMediaLink} onChange={(e) => setSocialMediaLink(e.target.value)} placeholder="Please write your account link"/>
   
         </div>
 
       </div>
 
       <div className="submit-container">
-        <button className="next-button" onClick={handleNextClick}> Next </button>
+        <button className="next-button" onClick= {HandleSubmit}> Next </button>
       </div>
     </div>
   );
