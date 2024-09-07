@@ -9,6 +9,7 @@ import Info from './Components/Info/Info.jsx';
 import InfoConfirmation from './Components/InfoConfirmation/InfoConfirmation.jsx';
 import Edit from './Components/Edit/edit.jsx';
 import ProfileEdit from './Components/ProfileEdit/ProfileEdit.jsx'
+import Review from './Components/Review/Review.jsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/user-edit" element={<Edit />} />
         <Route path="/info-confirmation" element={<InfoConfirmation />} />
         <Route path="/profile-edit" element={<ProfileEdit />} />
+        <Route path="/write-review" element={<Review/>} />
     
       </Routes>
     </Router>
