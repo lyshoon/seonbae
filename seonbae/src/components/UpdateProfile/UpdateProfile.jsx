@@ -31,7 +31,7 @@ const UpdateProfile = () => {
     'Lebanese', 'Liberian', 'Libyan', 'Liechtensteiner', 'Lithuanian', 'Luxembourger',
     'Madagascan', 'Malawian', 'Malaysian', 'Maldivian', 'Malian', 'Maltese',
     'Marshallese', 'Mauritanian', 'Mauritian', 'Mexican', 'Micronesian', 'Moldovan',
-    'Monacan', 'Mongolian', 'Moroccan', 'Mozambican', 'Namibian', 'Nauruan',
+    'Monacan', 'Mongolian', 'Moroccan', 'Mozambican', 'Myanmar',  'Namibian', 'Nauruan',
     'Nepalese', 'Nigerian', 'Nigerien', 'North Korean', 'Norwegian', 'Omani',
     'Pakistani', 'Palauan', 'Panamanian', 'Papua New Guinean', 'Paraguayan', 'Peruvian',
     'Polish', 'Portuguese', 'Qatari', 'Romanian', 'Russian', 'Rwandan',
@@ -126,7 +126,7 @@ const UpdateProfile = () => {
 
         <label htmlFor="univerisity" > Your University</label>
         <div id="university" className="input">
-          <select className="dropdown" placeholder="Your University" name="degree" value={selectedDegree}
+          <select className="dropdown" placeholder="Your University" name="university" value={selectedUniversity}
         onChange={handleChangeUniversity}>
                 {universities.map((univerisity, index) => (
               <option key={index} value={univerisity}>
