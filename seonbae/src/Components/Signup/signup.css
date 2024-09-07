@@ -1,0 +1,36 @@
+.container {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 60px;
+    width: 600px;
+    background: #fff;
+    align-items: center; 
+    border-radius: 60px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.text {
+    color: pink;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.underline {
+    width: 61px;
+    height: 6px;
+    background: purple;
+    border-radius: 9px;
+}
+
+
+
