@@ -54,14 +54,23 @@ const UpdateProfile = () => {
     'Undergraduate (1st year)', 'Undergraduate (2nd year)', 'Undergraduate (3rd year)','Undergraduate (4th year)', 'Post-graduate', 'Doctorate'
    ];
 
-   const universities = [
-           'Ajou University', 'Busan National University of Education', 'Chonnam National University', 'Chung-Ang University', 'Chungbuk National University', 'Dong-A University', 'Dongguk University', 'Ewha Womans University', 'Gachon University', 'Gyeongsang National University', 'Hallym University', 'Hanbat National University', 'Hanyang University', 'Hoseo University', 'Inha University', 'Jeju National University', 'KAIST (Korea Advanced Institute of Science and Technology)', 'Konkuk University', 'Korea Maritime and Ocean University', 'Korea University', 'Korea University of Technology and Education', 'Kyung Hee University', 'Kyungpook National University', 'Myongji University', 'Namseoul University', 'NongHyup University', 'POSTECH (Pohang University of Science and Technology)', 'Pukyong National University', 'Sangmyung University', 'Sejong University', 'Seongnam University', 'Seoul Cyber University', 'Seoul National University', 'Sogang University', "Sookmyung Women's University", 'Soongsil University', 'Sungkyunkwan University', 'Sunmoon University', 'Woosong University', 'Yonsei University'
-   ];
+  const universities = [
+    'Ajou University', 'Busan National University of Education', 'Chonnam National University', 'Chung-Ang University', 'Chungbuk National University', 'Dong-A University', 'Dongguk University', 'Ewha Womans University', 'Gachon University', 'Gyeongsang National University', 'Hallym University', 'Hanbat National University', 'Hanyang University', 'Hoseo University', 'Inha University', 'Jeju National University', 'KAIST (Korea Advanced Institute of Science and Technology)', 'Konkuk University', 'Korea Maritime and Ocean University', 'Korea University', 'Korea University of Technology and Education', 'Kyung Hee University', 'Kyungpook National University', 'Myongji University', 'Namseoul University', 'NongHyup University', 'POSTECH (Pohang University of Science and Technology)', 'Pukyong National University', 'Sangmyung University', 'Sejong University', 'Seongnam University', 'Seoul Cyber University', 'Seoul National University', 'Sogang University', "Sookmyung Women's University", 'Soongsil University', 'Sungkyunkwan University', 'Sunmoon University', 'Woosong University', 'Yonsei University'
+  ];
 
-   const [selectedUniversity, setSelectedUniversity] = useState('');
-   const handleChangeUniversity = (event) => {
-     setSelectedUniversity(event.target.value);
-   };
+  const [selectedUniversity, setSelectedUniversity] = useState('');
+  const handleChangeUniversity = (event) => {
+    setSelectedUniversity(event.target.value);
+  };
+
+  const majors = [
+    'Art History', 'Biology', 'Business', 'Business Administration', 'Chemistry', 'Civil Engineering', 'Computer Science', 'Economics', 'Electrical Engineering', 'English Literature', 'Environmental Science', 'Finance', 'History', 'Marketing', 'Mathematics', 'Mechanical Engineering', 'Nursing', 'Philosophy', 'Physics', 'Political Science', 'Psychology', 'Sociology'
+  ]
+
+  const [selectedMajor, setSelectedMajor] = useState('');
+  const handleChangeMajor = (event) => {
+    setSelectedMajor(event.target.value);
+  };
  
   const navigate = useNavigate();
 
@@ -126,6 +135,29 @@ const UpdateProfile = () => {
                 ))}
           </select>
         </div>
+
+        <label htmlFor="major" > Your Major</label>
+        <div id="major" className="input">
+          <select className="dropdown" placeholder="Your  Major" name="major" value={selectedMajor}
+        onChange={handleChangeMajor}>
+                {majors.map((major, index) => (
+              <option key={index} value={major}>
+                {major}
+              </option>
+                ))}
+          </select>
+        </div>
+
+        <label htmlFor="socialmedia" > Your Social Media Account</label>
+        <div id="socialmedia" className="input">
+          <select className="social-media-dropdown" placeholder="Social Media" name="socialmedia"> 
+            <option> Facebook </option>
+            <option> Instagram </option>
+          </select>
+          <input type="text" className="input" placeholder="Please write your account link"/>
+  
+        </div>
+
       </div>
 
       <div className="submit-container">
