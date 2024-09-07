@@ -27,7 +27,7 @@ body{
 
 .text {
     text-align: center;
-    color: pink;
+    color: rgb(0, 0, 0);
     font-size: 40px;
     font-weight: 700;
 }
@@ -35,7 +35,7 @@ body{
 .underline {
     width: 61px;
     height: 6px;
-    background: purple;
+    background: rgb(0, 0, 0);
     border-radius: 9px;
 }
 
@@ -53,8 +53,10 @@ body{
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 20 px 20px;
+    padding: 10 px 20px;
     margin: 20px 20px;
+    background-color: rgb(187, 228, 228);
+    border-radius: 5px;
 }
 
 .info-tab label {
@@ -65,10 +67,11 @@ body{
     font-size: 18px;
     background-color: rgba(206, 255, 255, 0.903);
     
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 5px;
     padding-right: 0%;
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 .info-tab p {
