@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const UpdateProfile = () => {
 
   const [selectedNationality, setSelectedNationality] = useState('');
-  const handleChange = (event) => {
+  const handleChangeNationality  = (event) => {
     setSelectedNationality(event.target.value);
   };
 
@@ -45,6 +45,24 @@ const UpdateProfile = () => {
     'Vatican', 'Venezuelan', 'Vietnamese', 'Yemeni', 'Zambian', 'Zimbabwean'
   ];
 
+  const [selectedDegree, setSelectedDegree] = useState('');
+  const handleChangeDegree = (event) => {
+    setSelectedDegree(event.target.value);
+  };
+
+  const degreeLevel = [
+    'Undergraduate (1st year)', 'Undergraduate (2nd year)', 'Undergraduate (3rd year)','Undergraduate (4th year)', 'Post-graduate', 'Doctorate'
+   ];
+
+   const universities = [
+           'Ajou University', 'Busan National University of Education', 'Chonnam National University', 'Chung-Ang University', 'Chungbuk National University', 'Dong-A University', 'Dongguk University', 'Ewha Womans University', 'Gachon University', 'Gyeongsang National University', 'Hallym University', 'Hanbat National University', 'Hanyang University', 'Hoseo University', 'Inha University', 'Jeju National University', 'KAIST (Korea Advanced Institute of Science and Technology)', 'Konkuk University', 'Korea Maritime and Ocean University', 'Korea University', 'Korea University of Technology and Education', 'Kyung Hee University', 'Kyungpook National University', 'Myongji University', 'Namseoul University', 'NongHyup University', 'POSTECH (Pohang University of Science and Technology)', 'Pukyong National University', 'Sangmyung University', 'Sejong University', 'Seongnam University', 'Seoul Cyber University', 'Seoul National University', 'Sogang University', "Sookmyung Women's University", 'Soongsil University', 'Sungkyunkwan University', 'Sunmoon University', 'Woosong University', 'Yonsei University'
+   ];
+
+   const [selectedUniversity, setSelectedUniversity] = useState('');
+   const handleChangeUniversity = (event) => {
+     setSelectedUniversity(event.target.value);
+   };
+ 
   const navigate = useNavigate();
 
   const handleNextClick = () => {
@@ -75,13 +93,37 @@ const UpdateProfile = () => {
 
         <label htmlFor="nationality" > Your nationality</label>
         <div id="nationality" className="input">
-          <select placeholder="Your Nationality" name="nationality" value="{selectedNationality}"
-        onChange={handleChange}>
+          <select className="dropdown" placeholder="Your Nationality" name="nationality" value={selectedNationality}
+        onChange={handleChangeNationality}>
               {nationalities.map((nationality, index) => (
               <option key={index} value={nationality}>
                 {nationality}
               </option>
             ))}
+          </select>
+        </div>
+
+        <label htmlFor="degree" > Your degree</label>
+        <div id="degree" className="input">
+          <select className="dropdown" placeholder="Your Degree" name="degree" value={selectedDegree}
+        onChange={handleChangeDegree}>
+                {degreeLevel.map((degree, index) => (
+              <option key={index} value={degree}>
+                {degree}
+              </option>
+                ))}
+          </select>
+        </div>
+
+        <label htmlFor="univerisity" > Your University</label>
+        <div id="university" className="input">
+          <select className="dropdown" placeholder="Your University" name="degree" value={selectedDegree}
+        onChange={handleChangeUniversity}>
+                {universities.map((univerisity, index) => (
+              <option key={index} value={univerisity}>
+                {univerisity}
+              </option>
+                ))}
           </select>
         </div>
       </div>
