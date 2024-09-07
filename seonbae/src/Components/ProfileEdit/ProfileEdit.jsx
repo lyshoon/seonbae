@@ -121,14 +121,15 @@ const ProfileEdit = () => {
       };
 
       return (
-        <div className='container'>
-          <div className="top-bar">
+        <>
+        <div className="top-bar">
             <h1 className="logo">SeonBae</h1>
               <div className="user-controls">
               <button className="logout" onClick = {() => navigate('/')}>Log Out</button>
               <div className="profile-icon" onClick = {() => navigate('/user-edit')}>👤</div> 
             </div>
           </div>
+        <div className='container'>
 
           <div className="header">
             <div className="text"> Edit your Profile </div>
@@ -214,6 +215,7 @@ const ProfileEdit = () => {
             <button className="save-button" onClick = {() => handleEdit()}> Save </button>
           </div>
         </div>
+        </>
       );
 }
 
