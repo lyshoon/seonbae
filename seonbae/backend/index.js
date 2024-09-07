@@ -8,9 +8,12 @@ const userRoute = require("./routes/user_route");
 
 const app = express();
 const server = require("http").createServer();
-const port = 3000;
+const port = 8080;
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000' // Allow requests from frontend port
+}));
+
 app.use(express.json());
 app.use(bodyParser.json());
 
