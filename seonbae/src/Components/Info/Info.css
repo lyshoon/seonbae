@@ -1,62 +1,83 @@
 .info-container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  .info-form {
-    margin-bottom: 40px;
-  }
-  
-  .form-group {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    font-weight: bold;
-    font-size: 16px;
-    margin-right: 10px;
-    flex: 1;
-  }
-  
-  .form-group input {
-    flex: 2;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    font-size: 16px;
-  }
-  
-  .bottom-section {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .notify-button, .review-button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .notify-button {
-    background-color: #28a745; 
-  }
-  
-  .review-button {
-    background-color: #ffc107; 
-  }
-  
-  .notify-button:hover, .review-button:hover {
-    opacity: 0.8;
-  }
-  
+  width: 80%;
+  margin: 0 auto;
+  padding: 80px;
+  background-color: #8ef9ff73;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 171, 244, 0.541);
+  font-family: Arial, sans-serif;
+}
+
+.info-form {
+  margin-bottom: 40px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.form-group input {
+  flex: 2;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.review-button {
+  background-color: #fdffbd;
+  color: rgb(114, 1, 108);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.review-button:hover {
+  opacity: 0.8;
+}
+
+.social-media-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.social-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #9b59b6; 
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-icon {
+  font-size: 24px;
+}
+
+.social-icon-container:hover {
+  background-color: #8e44ad; 
+  transform: scale(1.1);
+}
