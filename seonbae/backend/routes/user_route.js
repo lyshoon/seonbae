@@ -6,30 +6,47 @@ const path = require('path');
 
 /**
  * @swagger
- * /api/users/Add:
+ * /api/users/SignUp:
  *   post:
- *     summary: Add a new user
- *     description: Creates a new user by providing details such as name, bio, age, nationality, and social media information.
+ *     summary: Register a new user with a detailed profile
+ *     description: This API endpoint allows a user to sign up by providing their email, password, and additional profile information such as name, bio, age, and social media details.
  *     tags:
- *       - Users
+ *       - Auth
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - Email
+ *               - Password
+ *               - Name
+ *               - Age
+ *               - Major
+ *               - Year
+ *               - University
+ *               - DegreeType
  *             properties:
+ *               Email:
+ *                 type: string
+ *                 description: The email address of the user.
+ *                 example: johndoe@example.com
+ *               Password:
+ *                 type: string
+ *                 description: The password for the user's account.
+ *                 example: securepassword123
  *               Name:
  *                 type: string
- *                 description: The name of the user.
+ *                 description: The full name of the user.
  *                 example: John Doe
  *               Bio:
  *                 type: string
- *                 description: A brief bio of the user.
- *                 example: Software Engineer and technology enthusiast.
+ *                 description: A brief biography of the user.
+ *                 example: "Software Developer and Open Source Enthusiast"
  *               Age:
  *                 type: integer
- *                 description: The age of the user.
+ *                 description: The user's age.
  *                 example: 25
  *               Nationality:
  *                 type: string
@@ -37,86 +54,56 @@ const path = require('path');
  *                 example: American
  *               Major:
  *                 type: string
- *                 description: The major or field of study.
+ *                 description: The academic major of the user.
  *                 example: Computer Science
  *               Year:
- *                 type: integer
- *                 description: The year of study or graduation.
- *                 example: 2024
+ *                 type: string
+ *                 description: The current academic year of the user.
+ *                 example: 1
  *               University:
  *                 type: string
- *                 description: The university the user is associated with.
- *                 example: MIT
+ *                 description: The university the user attends.
+ *                 example: Stanford University
  *               DegreeType:
  *                 type: string
- *                 description: The degree type (e.g., Bachelor's, Master's).
+ *                 description: The type of degree the user is pursuing.
  *                 example: Bachelor's
  *               SocialMediaType:
  *                 type: string
- *                 description: The type of social media platform (e.g., LinkedIn, Twitter).
+ *                 description: The type of social media platform.
  *                 example: LinkedIn
  *               SocialMediaLink:
  *                 type: string
- *                 description: The URL to the user's social media profile.
- *                 example: https://linkedin.com/in/johndoe
+ *                 description: The URL of the user's social media profile.
+ *                 example: https://www.linkedin.com/in/johndoe
  *     responses:
  *       200:
- *         description: Successfully added the user
+ *         description: User successfully registered
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 _id:
+ *                 Email:
  *                   type: string
- *                   description: The ID of the created user.
+ *                   description: The email of the registered user.
+ *                   example: johndoe@example.com
  *                 Name:
  *                   type: string
- *                   description: The name of the user.
+ *                   description: The name of the registered user.
+ *                   example: John Doe
  *                 Bio:
  *                   type: string
- *                   description: A brief bio of the user.
- *                 Age:
- *                   type: integer
- *                   description: The age of the user.
- *                 Nationality:
- *                   type: string
- *                   description: The nationality of the user.
- *                 Major:
- *                   type: string
- *                   description: The major or field of study.
- *                 Year:
- *                   type: integer
- *                   description: The year of study or graduation.
- *                 University:
- *                   type: string
- *                   description: The university the user is associated with.
- *                 DegreeType:
- *                   type: string
- *                   description: The degree type (e.g., Bachelor's, Master's).
- *                 SocialMediaType:
- *                   type: string
- *                   description: The type of social media platform.
- *                 SocialMediaLink:
- *                   type: string
- *                   description: The URL to the user's social media profile.
+ *                   description: The bio of the registered user.
+ *                   example: "Software Developer and Open Source Enthusiast"
  *       500:
- *         description: Internal Server Error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 error:
- *                   type: string
- *                   description: Error message
+ *         description: Server error
  */
-router.post('/Add', async (req, res) => {
+router.post('/SignUp', async (req, res) => {
     try{
-        const { Name, Bio, Age, Nationality, Major, Year, University,
-            DegreeType, SocialMediaType, SocialMediaLink
-        } = req.body;
-        const user = new User({ Name, Bio, Age, Nationality, Major, Year, University,
+        const { Email, Password, Name, Bio, Age, Nationality, Major, Year, University,
+            DegreeType, SocialMediaType, SocialMediaLink} = req.body;
+        const user = new User({ Email, Password,Name, Bio, Age, Nationality, Major, Year, University,
             DegreeType, SocialMediaType, SocialMediaLink });
         await user.save();
         res.json(user);

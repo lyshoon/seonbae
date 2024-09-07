@@ -1,45 +1,41 @@
 const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
   {
+    Email: {
+        type: String,
+    },
+    Password: {
+        type: String,
+    },
     Name: {
       type: String,
-      required: true,
     },
     Bio: {
         type: String,
-        required: true,
     },
     Age: {
         type: Number,
-        required: true,
     },
     Nationality: {
         type: String,
-        required: true,
     },
     Major: {
         type: String,
-        required: true,
     },
     Year: {
         type: Number,
-        required: true,
     },
     University: {
         type: String,
-        required: true,
     },
     DegreeType: {
         type: String,
-        required: true,
     },
     SocialMediaType: {
         type: String,
-        required: true,
     },
     SocialMediaLink: {
         type: String,
-        required: true,
     },
 },
 );
