@@ -4,7 +4,7 @@
   padding: 80px;
   background-color: #8ef9ff73;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(255, 171, 244, 0.541);
+  box-shadow: 0 4px 8px rgba(255, 151, 241, 0.541);
   font-family: Arial, sans-serif;
 }
 
@@ -28,9 +28,9 @@
 .form-group input {
   flex: 2;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #5000f0;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #fffdfd;
   font-size: 16px;
 }
 
@@ -42,7 +42,7 @@
 
 .review-button {
   background-color: #fdffbd;
-  color: rgb(114, 1, 108);
+  color: rgb(149, 5, 142);
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
