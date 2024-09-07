@@ -16,10 +16,6 @@ const LoginSignup = () => {
         <div className="underline"></div>
       </div>
       <div className="inputs">
-        {action=="Login"?<div></div>:<div className="input">
-          <img src={user_icon} alt="User Icon" />
-          <input type="text" placeholder="Name" />
-        </div>}
         
         <div className="input">
           <img src={email_icon} alt="Email Icon" />

@@ -1,0 +1,77 @@
+.homepage-container {
+    height:100vh;
+    width: 100%;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    margin-top: 160px;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .user-controls {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logout {
+    margin-right: 15px;
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .profile-icon {
+    font-size: 24px;
+  }
+  
+  .search-container {
+    margin-top: 30px;
+  }
+  
+  .search-container label {
+    font-size: 20px;
+  }
+  
+  .search-container input {
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .recommendations {
+    margin-top: 30px;
+  }
+  
+  .recommendations h2 {
+    margin-bottom: 20px;
+  }
+  
+  .profile-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .profile-card p {
+    margin: 5px 0;
+  }
+  
