@@ -7,6 +7,7 @@ import Homepage from './Components/Homepage/homepage.jsx';
 import LoginSignup from './Components/LoginSignup/LoginSignup.jsx';
 import Info from './Components/Info/Info.jsx'; 
 import InfoConfirmation from './Components/InfoConfirmation/InfoConfirmation.jsx';
+import ProfileEdit from './Components/ProfileEdit/ProfileEdit.jsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/user-info" element={<Info/>}/>
         <Route path="/update-profile" element={<UpdateProfile />} />
         <Route path="/info-confirmation" element={<InfoConfirmation />} />
+        <Route path="/profile-edit" element={<ProfileEdit />} />
     
       </Routes>
     </Router>
