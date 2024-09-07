@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import './LoginSignup.css';
+import { useNavigate } from "react-router-dom";
 
 import user_icon from '../Assets/person.png';
 import email_icon from '../Assets/email.png';
@@ -10,6 +11,7 @@ const LoginSignup = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [action, setAction] = useState("Login");  
+  const navigate = useNavigate();
 
   const handleSignUp = async(e) => {
     try {
@@ -23,6 +25,7 @@ const LoginSignup = () => {
       sessionStorage.setItem("userId", response.data._id);
 
       //Write Code here
+      navigate("/homePage")
     }
     catch(error){
       console.log(error);
@@ -41,6 +44,7 @@ const LoginSignup = () => {
         sessionStorage.setItem("userId", response.data.user._id);
 
         //Write Code here
+        navigate("/homePage")
         }
       catch(error){
         console.log(error);

@@ -183,7 +183,6 @@ router.patch('/AddInformationbyUserId', async (req, res) => {
             ...(Major && { Major }),
             ...(Year && { Year }),
             ...(University && { University }),
-            ...(DegreeType && { DegreeType }),
             ...(SocialMediaType && { SocialMediaType }),
             ...(SocialMediaLink && { SocialMediaLink }),
         };
@@ -287,5 +286,68 @@ router.post('/LogIn', async (req, res) => {
   
     res.send({user});
   });
+
+/**
+ * @swagger
+ * /api/users/GetAllUsers:
+ *   get:
+ *     summary: Retrieve a list of all users
+ *     description: Fetch all users from the database.
+ *     tags:
+ *       - Users
+ *     responses:
+ *       200:
+ *         description: A list of all users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                     example: "60d21b4667d0d8992e610c85"
+ *                   Name:
+ *                     type: string
+ *                     example: "John Doe"
+ *                   Email:
+ *                     type: string
+ *                     example: "johndoe@example.com"
+ *                   Age:
+ *                     type: number
+ *                     example: 25
+ *                   Nationality:
+ *                     type: string
+ *                     example: "American"
+ *                   Major:
+ *                     type: string
+ *                     example: "Computer Science"
+ *                   University:
+ *                     type: string
+ *                     example: "Harvard University"
+ *                   DegreeType:
+ *                     type: string
+ *                     example: "Bachelor's"
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: "Internal server error"
+ */
+router.get('/GetAllUsers', async (req, res) => {
+    try{
+        const users = await User.find();
+
+        res.status(200).json(users);
+    }catch(error){
+        res.status(500).json(error);
+    }
+})
 
 module.exports = router;

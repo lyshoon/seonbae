@@ -23,12 +23,9 @@ const userSchema = new mongoose.Schema(
         type: String,
     },
     Year: {
-        type: Number,
-    },
-    University: {
         type: String,
     },
-    DegreeType: {
+    University: {
         type: String,
     },
     SocialMediaType: {

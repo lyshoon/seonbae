@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocs = require("./swagger");
 const userRoute = require("./routes/user_route");
+const reviewRoute = require("./routes/review_routes");
 
 const app = express();
 const server = require("http").createServer();
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use("/api/users", userRoute);
+app.use("/api/reviews", reviewRoute);
 
 // A basic route to test the server
 app.get('/', (req, res) => {
