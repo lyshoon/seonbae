@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import './Info.css';
 import axios from 'axios';
 import { FaFacebook, FaInstagram } from 'react-icons/fa'; 
+import { useNavigate } from 'react-router-dom';
 
 const Info = () => { 
+
+  const navigate = useNavigate();
 
   const [user, setUser] = useState([]);
   const getUserbyId = async () => {
@@ -24,6 +27,14 @@ const Info = () => {
   }, []);
 
   return (
+    <>
+    <div className="top-bar">
+      <h1 className="logo">SeonBae</h1>
+        <div className="user-controls">
+          <button className="logout" onClick = {() => navigate('/')}>Log Out</button>
+          <div className="profile-icon" onClick = {() => navigate('/user-edit')}>👤</div> 
+        </div>
+    </div>
     <div className="info-container">
       <div className="info-form">
         <div className="form-group">
@@ -61,6 +72,7 @@ const Info = () => {
         <button className="review-button">Leave a review</button>
       </div>
     </div>
+    </>
   );
 };
 
