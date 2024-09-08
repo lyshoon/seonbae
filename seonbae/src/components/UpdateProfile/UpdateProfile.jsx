@@ -104,6 +104,14 @@ const UpdateProfile = () => {
   }
 
   return (
+    <>
+    <div className="top-bar">
+      <h1 className="logo">SeonBae</h1>
+        <div className="user-controls">
+          <button className="logout" onClick = {() => navigate('/')}>Log Out</button>
+          <div className="profile-icon" onClick = {() => navigate('/user-edit')}>👤</div> 
+        </div>
+    </div>
     <div className='container'>
       <div className="header">
         <div className="text"> Update Your Profile </div>
@@ -189,6 +197,7 @@ const UpdateProfile = () => {
         <button className="next-button" onClick= {HandleSubmit}> Next </button>
       </div>
     </div>
+    </>
   );
 }
 
